@@ -97,28 +97,38 @@ const malla = document.getElementById("malla");
 
 function renderMalla() {
   malla.innerHTML = "";
-  ramos.forEach((ramo) => {
-    const div = document.createElement("div");
-    div.className = "ramo";
-    if (ramo.aprobado) div.classList.add("aprobado");
-    if (ramo.prerequisitos.every(pr => {
-      const req = ramos.find(r => r.codigo === pr);
-      return req && req.aprobado;
-    })) {
-      div.classList.add("activo");
-      div.onclick = () => {
-        ramo.aprobado = !ramo.aprobado;
-        renderMalla();
-      };
-    }
 
-    div.innerHTML = `
-      <strong>${ramo.codigo}</strong><br/>
-      ${ramo.nombre}<br/>
-      <small>${ramo.credUSM} créditos</small>
-    `;
-    malla.appendChild(div);
-  });
+  // Agrupar por semestre
+  for (const semestre in datos) {
+    const contenedor = document.createElement("div");
+    contenedor.className = "semestre";
+    contenedor.innerHTML = `<h3>${semestre.replace("s", "")}° Semestre</h3>`;
+
+    datos[semestre].forEach((ramoData) => {
+      const [nombre, codigo, _, credUSM, _, prerequisitos] = ramoData;
+      const ramo = ramos.find(r => r.codigo === codigo);
+
+      const div = document.createElement("div");
+      div.className = "ramo";
+      if (ramo.aprobado) div.classList.add("aprobado");
+      if (prerequisitos.every(pr => {
+        const req = ramos.find(r => r.codigo === pr);
+        return req && req.aprobado;
+      })) {
+        div.classList.add("activo");
+        div.onclick = () => {
+          ramo.aprobado = !ramo.aprobado;
+          renderMalla();
+        };
+      }
+
+      div.innerHTML = `<strong>${codigo}</strong><br/>${nombre}<br/><small>${credUSM} créditos</small>`;
+      contenedor.appendChild(div);
+    });
+
+    malla.appendChild(contenedor);
+  }
 }
+
 
 renderMalla();

@@ -19,7 +19,7 @@ const datos = {
   ],
   "s3": [
     ["Derecho Constitucional III: Derecho Orgánico", "DER1252", 3, 3, "DER", ["DER1162"], ""],
-    ["Derecho Internacional Público I: Fundamentos y Fuentes del Derecho Internacional Público", "DER1253", 3, 3, "DER", ["DER1162"], ""],
+    ["Derecho Internacional Público I: Fundamentos y Fuentes del Derecho Internacional Público", "DER1253", 3, 3, "DER", ["DER1152","DER1162"], ""],
     ["Derecho Económico I: Fundamentos de Economía y Sistemas Económicos", "DER1254", 3, 3, "DER", ["DER1164"], ""],
     ["Derecho Civil I: Acto Jurídico y Contratos en General", "DER1255", 3, 3, "DER", ["DER1153"], ""],
     ["Derecho Procesal Civil I: Teoría General del Proceso", "DER1256", 3, 3, "DER", ["DER1169"], ""],

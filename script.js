@@ -24,8 +24,7 @@ const datos = {
     ["Derecho Civil I: Acto Jurídico y Contratos en General", "DER1255", 3, 3, "DER", ["DER1153"], ""],
     ["Derecho Procesal Civil I: Teoría General del Proceso", "DER1256", 3, 3, "DER", ["DER1169"], ""],
     ["Derecho Penal I: Potestad Penal y Teoría del Delito", "DER1257", 3, 3, "DER", ["DER1164"], ""],
-    ["Estrategias de Producción de Discurso Escrito", "DER1258", 2, 2, "DER", ["DER1157"], ""],
-    ["Estrategias de Argumentación", "DER1269", 2, 2, "DER", ["DER1167"], ""]
+    ["Estrategias de Producción de Discurso Escrito", "DER1258", 2, 2, "DER", ["DER1157"], ""]
   ],
   "s4": [
     ["Derecho Constitucional IV: Derechos Fundamentales", "DER1262", 3, 3, "DER", ["DER1252"], ""],

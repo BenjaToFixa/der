@@ -15,7 +15,7 @@ const datos = {
     ["Historia del Derecho II: Historia del Derecho Moderno y Contemporáneo", "DER1164", 2, 2, "DER", ["DER1154"], ""],
     ["Introducción al Derecho II: La Judicatura", "DER1169", 3, 3, "DER", ["DER1156"], ""],
     ["Teoría del Derecho II: Teoría de la Norma Jurídica y el Ordenamiento Jurídico", "DER1168", 3, 3, "DER", ["DER1158"], ""],
-    ["Estrategias de Producción de Discurso Oral", "DER1167", 2, 2, "DER", [], ""]
+    ["Estrategias de Producción de Discurso Oral", "DER1167", 2, 2, "DER", ["DER1157"], ""]
   ],
   "s3": [
     ["Derecho Constitucional III: Derecho Orgánico", "DER1252", 3, 3, "DER", ["DER1162"], ""],
@@ -24,7 +24,7 @@ const datos = {
     ["Derecho Civil I: Acto Jurídico y Contratos en General", "DER1255", 3, 3, "DER", ["DER1153"], ""],
     ["Derecho Procesal Civil I: Teoría General del Proceso", "DER1256", 3, 3, "DER", ["DER1169"], ""],
     ["Derecho Penal I: Potestad Penal y Teoría del Delito", "DER1257", 3, 3, "DER", ["DER1164"], ""],
-    ["Estrategias de Producción de Discurso Escrito", "DER1258", 2, 2, "DER", ["DER1157"], ""]
+    ["Estrategias de Producción de Discurso Escrito", "DER1258", 2, 2, "DER", ["DER1157","DER1167"], ""]
   ],
   "s4": [
     ["Derecho Constitucional IV: Derechos Fundamentales", "DER1262", 3, 3, "DER", ["DER1252"], ""],

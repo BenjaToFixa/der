@@ -105,7 +105,7 @@ function renderMalla() {
     contenedor.innerHTML = `<h3>${semestre.replace("s", "")}° Semestre</h3>`;
 
     datos[semestre].forEach((ramoData) => {
-      const [nombre, codigo, _, credUSM, _, prerequisitos] = ramoData;
+      const [nombre, codigo, , credUSM, , prerequisitos] = ramoData;
       const ramo = ramos.find(r => r.codigo === codigo);
 
       const div = document.createElement("div");

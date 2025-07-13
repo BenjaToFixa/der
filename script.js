@@ -7,15 +7,15 @@ const datos = {
     ["Historia del Derecho I: Historia del Derecho Antiguo y Medieval", "DER1154", 2, 2, "DER", [], ""],
     ["Introducción al Derecho I: Fuentes del Ordenamiento Jurídico y Sujetos de Derecho", "DER1156", 3, 3, "DER", [], ""],
     ["Teoría del Derecho I: El Derecho como Fenómeno Social", "DER1158", 3, 3, "DER", [], ""],
-    ["Estrategias de Comprensión de Discurso Escrito", "DER1157", 2, 2, "DER", [], ""],
-    ["Estrategias de Producción de Discurso Oral", "DER1167", 2, 2, "DER", [], ""]
+    ["Estrategias de Comprensión de Discurso Escrito", "DER1157", 2, 2, "DER", [], ""]
   ],
   "s2": [
     ["Derecho Constitucional II: Teoría Constitucional e Historia Política y Constitucional de Chile", "DER1162", 3, 3, "DER", ["DER1152"], ""],
     ["Derecho Romano II: Derecho Romano de Bienes y Obligaciones", "DER1163", 3, 3, "DER", ["DER1153"], ""],
     ["Historia del Derecho II: Historia del Derecho Moderno y Contemporáneo", "DER1164", 2, 2, "DER", ["DER1154"], ""],
     ["Introducción al Derecho II: La Judicatura", "DER1169", 3, 3, "DER", ["DER1156"], ""],
-    ["Teoría del Derecho II: Teoría de la Norma Jurídica y el Ordenamiento Jurídico", "DER1168", 3, 3, "DER", ["DER1158"], ""]
+    ["Teoría del Derecho II: Teoría de la Norma Jurídica y el Ordenamiento Jurídico", "DER1168", 3, 3, "DER", ["DER1158"], ""],
+    ["Estrategias de Producción de Discurso Oral", "DER1167", 2, 2, "DER", [], ""]
   ],
   "s3": [
     ["Derecho Constitucional III: Derecho Orgánico", "DER1252", 3, 3, "DER", ["DER1162"], ""],

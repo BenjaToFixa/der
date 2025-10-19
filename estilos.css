@@ -115,3 +115,10 @@ html, body {
   background-color: #ffe4f2;
   border-radius: 8px;
 }
+/* Efecto visual al pasar el cursor sobre las columnas */
+.semestre:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+}
+

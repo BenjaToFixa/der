@@ -47,18 +47,27 @@ const datos = {
     ["DER1100", "Licenciatura", []]
   ]
 };
-
+// estados: pendiente | cursando | aprobado
 const ramos = [];
-for (const semestre in datos) {
-  for (const ramo of datos[semestre]) {
-    const [codigo, nombre, prerequisitos] = ramo;
-    ramos.push({ codigo, nombre, prerequisitos, estado: "pendiente" }); 
-    // estados: pendiente | cursando | aprobado
-  }
+for (const s in datos) for (const [codigo, nombre, prerequisitos] of datos[s]) {
+  ramos.push({ codigo, nombre, prerequisitos, estado: "pendiente" });
 }
 
 const malla = document.getElementById("malla");
 const orden = ["s5","s6","s7","s8","s9","s10"];
+
+function requisitosOk(prs) {
+  return prs.every(pr => {
+    const req = ramos.find(r => r.codigo === pr);
+    return req && req.estado === "aprobado";
+  });
+}
+
+function cicloEstado(ramo) {
+  if (ramo.estado === "pendiente") ramo.estado = "cursando";
+  else if (ramo.estado === "cursando") ramo.estado = "aprobado";
+  else ramo.estado = "pendiente";
+}
 
 function renderMalla() {
   malla.innerHTML = "";
@@ -72,33 +81,39 @@ function renderMalla() {
 
     datos[semestre].forEach(([codigo, nombre, prerequisitos]) => {
       const ramo = ramos.find(r => r.codigo === codigo);
+
       const div = document.createElement("div");
       div.className = "ramo";
       div.innerHTML = `<strong>${codigo}</strong><br>${nombre}`;
 
-      const requisitosCumplidos = prerequisitos.every(pr => {
-        const req = ramos.find(r => r.codigo === pr);
-        return req && req.estado === "aprobado";
-      });
-
-      if (requisitosCumplidos || prerequisitos.length === 0)
-        div.classList.add("activo");
-
-      // color según estado
+      // estado visual
       if (ramo.estado === "aprobado") div.classList.add("aprobado");
       if (ramo.estado === "cursando") div.classList.add("cursando");
 
-      // clic: alternar estados
-      div.onclick = () => {
-        if (!(requisitosCumplidos || prerequisitos.length === 0)) {
-          alert(`No puedes cursar ${codigo}. Falta requisito.`);
-          return;
-        }
-        if (ramo.estado === "pendiente") ramo.estado = "cursando";
-        else if (ramo.estado === "cursando") ramo.estado = "aprobado";
-        else ramo.estado = "pendiente";
+      // habilitación por requisitos
+      const habil = requisitosOk(prerequisitos) || prerequisitos.length === 0;
+      if (habil) div.classList.add("activo");
+
+      // doble clic (desktop) + doble tap (móvil)
+      const activar = (e) => {
+        if (!habil) { alert(`No puedes cursar ${codigo}. Requiere: ${prerequisitos.join(", ")}`); return; }
+        cicloEstado(ramo);
         renderMalla();
       };
+
+      // desktop: dblclick
+      div.addEventListener('dblclick', (e) => { e.preventDefault(); activar(e); });
+
+      // móvil: doble tap manual
+      let lastTap = 0;
+      div.addEventListener('click', (e) => {
+        const now = Date.now();
+        if (now - lastTap < 300) { // segundo tap en <300ms
+          e.preventDefault();
+          activar(e);
+        }
+        lastTap = now;
+      }, { passive: true });
 
       cont.appendChild(div);
     });

@@ -20,7 +20,7 @@ const datos = {
     ["DER1066", "Clínica: Negociación y Resolución de Conflictos", []]
   ],
   "s7": [
-    ["DER1070", "Control y Responsabilidad de la Administración del Estado", ["DER1050", "DER1060"]],
+    ["DER1070", "Control y Responsabilidad de la Administración del Estado", ["DER1060", "DER1063"]],
     ["DER1072", "Derecho de los Mercados Financieros", ["DER1062"]],
     ["DER1073", "Contratos en Particular", ["DER1063"]],
     ["DER1071", "Introducción al Derecho Comercial", []],
@@ -31,9 +31,9 @@ const datos = {
     ["DER1082", "Teoría del Ordenamiento Jurídico", []],
     ["DER1083", "Familia", ["DER1073"]],
     ["DER1081", "Sociedades de Capital", ["DER1071"]],
-    ["DER1080", "Derecho Tributario", ["DER1072"]],
-    ["DER1085", "Derecho Procesal Penal", ["DER1077"]],
-    ["DER1084", "Litigación Oral", ["DER1066"]]
+    ["DER1080", "Derecho Tributario", ["DER1071"]],
+    ["DER1085", "Derecho Procesal Penal", ["DER1065","DER1064"]],
+    ["DER1084", "Enseñanza clínica del derecho: Litigación Oral", ["DER1057"]]
   ],
   "s9": [
     ["DER1092", "Filosofía del Derecho", ["DER1082"]],
@@ -41,7 +41,7 @@ const datos = {
     ["DER1091", "Derecho Concursal", ["DER1081"]],
     ["DER1094", "Ética Profesional", []],
     ["DER1095", "Memoria", ["DER1076"]],
-    ["DER1090", "Pasantía Profesional", ["DER1084"]]
+    ["DER1090", "Pasantía Profesional", []]
   ],
   "s10": [
     ["DER1100", "Licenciatura", []]

@@ -1,61 +1,117 @@
-html, body { margin: 0; padding: 0; }
+/* --- Estilo general aesthetic pastel --- */
 
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(180deg, #fff6f9 0%, #ffeef8 100%);
+  color: #4a4a4a;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+/* --- Título principal --- */
+.titulo {
+  text-align: center;
+  font-size: 40px;
+  color: #b4004e;
+  background: linear-gradient(135deg, #ffe4f2, #ffd6eb);
+  border-radius: 20px;
+  margin: 25px auto 15px;
+  padding: 20px;
+  width: fit-content;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  text-shadow: 1px 1px 2px #fff;
+  letter-spacing: 1px;
+}
+
+/* --- Contenedor principal de la malla --- */
 #malla {
   display: flex;
-  flex-wrap: nowrap;           /* no envolver columnas */
+  flex-wrap: nowrap;
   gap: 20px;
-  overflow-x: auto;            /* scroll horizontal */
-  -webkit-overflow-scrolling: touch; /* scroll fluido iOS */
-  overscroll-behavior-x: contain;
-  padding: 20px 20px 28px;     /* espacio para scrollbar */
-  width: 100vw;
+  overflow-x: auto;
+  padding: 20px 25px 40px;
   box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
 }
 
+/* --- Cada bloque de semestre --- */
 .semestre {
-  flex: 0 0 240px;             /* no se encoge; ancho fijo */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: #ffe4f2;
-  padding: 10px;
-  border-radius: 10px;
+  flex: 0 0 240px;
+  background: #fff0fa;
+  border: 2px solid #ffb6d9;
+  border-radius: 18px;
+  padding: 15px;
+  text-align: center;
   min-width: 240px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
 }
 
-.semestre h3 { margin-bottom: 10px; }
+.semestre:hover {
+  transform: translateY(-3px);
+}
 
+.semestre h3 {
+  font-size: 20px;
+  margin: 0 0 10px;
+  color: #b4004e;
+  text-shadow: 1px 1px 2px #fff;
+}
+
+/* --- Estilo base de los ramos --- */
 .ramo {
   background-color: #f9cce3;
   border: 2px solid #d87093;
-  border-radius: 8px;
+  border-radius: 12px;
   padding: 10px;
   width: 180px;
-  font-size: 13px;
+  font-size: 14px;
   cursor: pointer;
-  margin: 5px 0;
-  opacity: 0.5;
+  margin: 6px auto;
+  opacity: 0.6;
   transition: all 0.3s ease;
   text-align: center;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.05);
 }
 
-.ramo.activo { opacity: 1; background-color: #ffb6c1; }
-.ramo.aprobado { background-color: #a8e6a2; border-color: #4caf50; }
-
-h1 {
-  font-family: 'Raleway', sans-serif;
-  font-size: 28px;
-  color: #b4004e;
-  text-align: center;
-  margin: 0;
-  padding: 16px;
-  background-color: #ffe4f2;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  text-shadow: 1px 1px 1px #fff;
-}
-/* Ramo en curso (amarillo por defecto) */
-.ramo.cursando {
-  background-color: #ffd966;
-  border-color: #e6b800;
+.ramo:hover {
   opacity: 1;
+  transform: scale(1.03);
+}
+
+/* --- Ramo desbloqueado --- */
+.ramo.activo {
+  opacity: 1;
+  background-color: #ffb6c1;
+}
+
+/* --- Ramo cursando (amarillo pastel) --- */
+.ramo.cursando {
+  background-color: #fff4b5;
+  border-color: #e6c84d;
+  opacity: 1;
+}
+
+/* --- Ramo aprobado (verde menta) --- */
+.ramo.aprobado {
+  background-color: #c8f7c5;
+  border-color: #64c46b;
+  opacity: 1;
+}
+
+/* --- Scroll estético --- */
+#malla::-webkit-scrollbar {
+  height: 10px;
+}
+
+#malla::-webkit-scrollbar-thumb {
+  background-color: #f4a1c2;
+  border-radius: 8px;
+}
+
+#malla::-webkit-scrollbar-track {
+  background-color: #ffe4f2;
+  border-radius: 8px;
 }

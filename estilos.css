@@ -1,32 +1,36 @@
+html, body { margin: 0; padding: 0; }
+
 #malla {
   display: flex;
-  justify-content: start;
-  align-items: flex-start;
+  flex-wrap: nowrap;           /* no envolver columnas */
   gap: 20px;
-  overflow-x: auto;
-  padding: 20px;
+  overflow-x: auto;            /* scroll horizontal */
+  -webkit-overflow-scrolling: touch; /* scroll fluido iOS */
+  overscroll-behavior-x: contain;
+  padding: 20px 20px 28px;     /* espacio para scrollbar */
+  width: 100vw;
+  box-sizing: border-box;
 }
 
 .semestre {
+  flex: 0 0 240px;             /* no se encoge; ancho fijo */
   display: flex;
   flex-direction: column;
   align-items: center;
   background: #ffe4f2;
   padding: 10px;
   border-radius: 10px;
-  min-width: 220px;
+  min-width: 240px;
 }
 
-.semestre h3 {
-  margin-bottom: 10px;
-}
+.semestre h3 { margin-bottom: 10px; }
 
 .ramo {
   background-color: #f9cce3;
   border: 2px solid #d87093;
   border-radius: 8px;
   padding: 10px;
-  width: 160px;
+  width: 180px;
   font-size: 13px;
   cursor: pointer;
   margin: 5px 0;
@@ -35,25 +39,17 @@
   text-align: center;
 }
 
-.ramo.activo {
-  opacity: 1;
-  background-color: #ffb6c1;
-}
-
-.ramo.aprobado {
-  background-color: #a8e6a2;
-  border-color: #4caf50;
-}
+.ramo.activo { opacity: 1; background-color: #ffb6c1; }
+.ramo.aprobado { background-color: #a8e6a2; border-color: #4caf50; }
 
 h1 {
   font-family: 'Raleway', sans-serif;
-  font-size: 34px;
+  font-size: 28px;
   color: #b4004e;
   text-align: center;
-  margin-bottom: 25px;
+  margin: 0;
+  padding: 16px;
   background-color: #ffe4f2;
-  padding: 15px;
-  border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   text-shadow: 1px 1px 1px #fff;
 }

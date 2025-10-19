@@ -63,10 +63,10 @@ function requisitosOk(prs) {
   });
 }
 
-function cicloEstado(ramo) {
-  if (ramo.estado === "pendiente") ramo.estado = "cursando";
-  else if (ramo.estado === "cursando") ramo.estado = "aprobado";
-  else ramo.estado = "pendiente";
+function siguienteEstado(r) {
+  if (r.estado === "pendiente") r.estado = "cursando";
+  else if (r.estado === "cursando") r.estado = "aprobado";
+  else r.estado = "pendiente";
 }
 
 function renderMalla() {
@@ -86,34 +86,23 @@ function renderMalla() {
       div.className = "ramo";
       div.innerHTML = `<strong>${codigo}</strong><br>${nombre}`;
 
-      // estado visual
-      if (ramo.estado === "aprobado") div.classList.add("aprobado");
-      if (ramo.estado === "cursando") div.classList.add("cursando");
-
       // habilitación por requisitos
       const habil = requisitosOk(prerequisitos) || prerequisitos.length === 0;
       if (habil) div.classList.add("activo");
 
-      // doble clic (desktop) + doble tap (móvil)
-      const activar = (e) => {
-        if (!habil) { alert(`No puedes cursar ${codigo}. Requiere: ${prerequisitos.join(", ")}`); return; }
-        cicloEstado(ramo);
-        renderMalla();
-      };
+      // estado visual
+      if (ramo.estado === "aprobado") div.classList.add("aprobado");
+      if (ramo.estado === "cursando") div.classList.add("cursando");
 
-      // desktop: dblclick
-      div.addEventListener('dblclick', (e) => { e.preventDefault(); activar(e); });
-
-      // móvil: doble tap manual
-      let lastTap = 0;
+      // clic simple para cambiar estado
       div.addEventListener('click', (e) => {
-        const now = Date.now();
-        if (now - lastTap < 300) { // segundo tap en <300ms
-          e.preventDefault();
-          activar(e);
+        if (!habil) {
+          alert(`No puedes cursar ${codigo}. Requiere: ${prerequisitos.join(", ")}`);
+          return;
         }
-        lastTap = now;
-      }, { passive: true });
+        siguienteEstado(ramo);
+        renderMalla();
+      });
 
       cont.appendChild(div);
     });

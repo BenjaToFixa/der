@@ -48,13 +48,12 @@ const datos = {
   ]
 };
 
-// --- Configuración y renderizado ---
-
 const ramos = [];
 for (const semestre in datos) {
   for (const ramo of datos[semestre]) {
     const [codigo, nombre, prerequisitos] = ramo;
-    ramos.push({ codigo, nombre, prerequisitos, aprobado: false });
+    ramos.push({ codigo, nombre, prerequisitos, estado: "pendiente" }); 
+    // estados: pendiente | cursando | aprobado
   }
 }
 
@@ -73,24 +72,33 @@ function renderMalla() {
 
     datos[semestre].forEach(([codigo, nombre, prerequisitos]) => {
       const ramo = ramos.find(r => r.codigo === codigo);
-
       const div = document.createElement("div");
       div.className = "ramo";
       div.innerHTML = `<strong>${codigo}</strong><br>${nombre}`;
 
       const requisitosCumplidos = prerequisitos.every(pr => {
         const req = ramos.find(r => r.codigo === pr);
-        return req && req.aprobado;
+        return req && req.estado === "aprobado";
       });
 
-      if (ramo.aprobado) div.classList.add("aprobado");
-      if (requisitosCumplidos || prerequisitos.length === 0) {
+      if (requisitosCumplidos || prerequisitos.length === 0)
         div.classList.add("activo");
-        div.onclick = () => {
-          ramo.aprobado = !ramo.aprobado;
-          renderMalla();
-        };
-      }
+
+      // color según estado
+      if (ramo.estado === "aprobado") div.classList.add("aprobado");
+      if (ramo.estado === "cursando") div.classList.add("cursando");
+
+      // clic: alternar estados
+      div.onclick = () => {
+        if (!(requisitosCumplidos || prerequisitos.length === 0)) {
+          alert(`No puedes cursar ${codigo}. Falta requisito.`);
+          return;
+        }
+        if (ramo.estado === "pendiente") ramo.estado = "cursando";
+        else if (ramo.estado === "cursando") ramo.estado = "aprobado";
+        else ramo.estado = "pendiente";
+        renderMalla();
+      };
 
       cont.appendChild(div);
     });

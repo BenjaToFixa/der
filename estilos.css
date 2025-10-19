@@ -172,4 +172,65 @@ html, body {
     box-shadow: 0 6px 12px rgba(255, 255, 255, 0.1);
   }
 }
+/* Botón de modo oscuro */
+.boton-tema {
+  display: block;
+  margin: 10px auto 25px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #ffd6eb, #ffe4f2);
+  color: #b4004e;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+}
+
+.boton-tema:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+
+/* Tema oscuro activado */
+body.dark {
+  background: linear-gradient(180deg, #1e1e1e 0%, #2b2b2b 100%);
+  color: #f5f5f5;
+}
+
+body.dark .titulo {
+  background: linear-gradient(135deg, #333, #222);
+  color: #ff9ecf;
+}
+
+body.dark .semestre {
+  background: #2a2a2a;
+  border: 1px solid #444;
+}
+
+body.dark .ramo {
+  background-color: #3b3b3b;
+  border-color: #555;
+  color: #f0f0f0;
+}
+
+body.dark .ramo.activo {
+  background-color: #b34d87;
+}
+
+body.dark .ramo.cursando {
+  background-color: #5a80d8;
+  border-color: #91b5ff;
+}
+
+body.dark .ramo.aprobado {
+  background-color: #3e9442;
+  border-color: #7be07b;
+}
+
+body.dark .boton-tema {
+  background: linear-gradient(135deg, #444, #333);
+  color: #ffb6d9;
+}
 

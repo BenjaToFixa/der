@@ -53,3 +53,9 @@ h1 {
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   text-shadow: 1px 1px 1px #fff;
 }
+/* Ramo en curso (amarillo por defecto) */
+.ramo.cursando {
+  background-color: #ffd966;
+  border-color: #e6b800;
+  opacity: 1;
+}

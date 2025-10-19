@@ -48,7 +48,8 @@ const datos = {
   ]
 };
 
-// Estructura interna
+// --- Configuración y renderizado ---
+
 const ramos = [];
 for (const semestre in datos) {
   for (const ramo of datos[semestre]) {
@@ -58,14 +59,17 @@ for (const semestre in datos) {
 }
 
 const malla = document.getElementById("malla");
+const orden = ["s5","s6","s7","s8","s9","s10"];
 
 function renderMalla() {
   malla.innerHTML = "";
 
-  for (const semestre in datos) {
+  for (const semestre of orden) {
+    if (!datos[semestre]) continue;
+
     const cont = document.createElement("div");
     cont.className = "semestre";
-    cont.innerHTML = `<h3>${semestre.replace("s", "")}° Semestre</h3>`;
+    cont.innerHTML = `<h3>${semestre.replace("s","")}° Semestre</h3>`;
 
     datos[semestre].forEach(([codigo, nombre, prerequisitos]) => {
       const ramo = ramos.find(r => r.codigo === codigo);
@@ -74,7 +78,6 @@ function renderMalla() {
       div.className = "ramo";
       div.innerHTML = `<strong>${codigo}</strong><br>${nombre}`;
 
-      // Condiciones de estado
       const requisitosCumplidos = prerequisitos.every(pr => {
         const req = ramos.find(r => r.codigo === pr);
         return req && req.aprobado;

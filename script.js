@@ -113,20 +113,18 @@ function renderMalla() {
 
 renderMalla();
 
+
 // --- Modo oscuro manual con guardado ---
 const botonTema = document.getElementById("theme-toggle");
 
-// cargar preferencia guardada
 if (localStorage.getItem("tema") === "oscuro") {
   document.body.classList.add("dark");
   botonTema.textContent = "☀️ Modo claro";
 }
 
-// alternar
 botonTema.addEventListener("click", () => {
   document.body.classList.toggle("dark");
   const modoOscuro = document.body.classList.contains("dark");
   botonTema.textContent = modoOscuro ? "☀️ Modo claro" : "🌙 Modo oscuro";
   localStorage.setItem("tema", modoOscuro ? "oscuro" : "claro");
 });
-
